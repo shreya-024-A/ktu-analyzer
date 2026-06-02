@@ -1,0 +1,21 @@
+<!-- Simplified for example -->
+<h1>Student Dashboard</h1>
+<p>Total Points: {{ total }} / 100</p>
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <select name="category"><option>Sports</option><option>Cultural</option></select>
+    <select name="level"><option>I</option><option>II</option><option>III</option></select>
+    <input type="file" name="file" required>
+    <button type="submit">Upload</button>
+</form>
+
+<table>
+    {% for cert in certs %}
+    <tr>
+        <td>{{ cert.category }}</td>
+        <td>{{ cert.points_awarded }}</td>
+        <td>{{ cert.status }}</td>
+    </tr>
+    {% endfor %}
+</table>
